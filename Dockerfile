@@ -8,4 +8,4 @@ RUN npm install -g node-pg-migrate && npm install
 
 COPY . .
 
-CMD sh -c "node-pg-migrate up && npm start"
+CMD sh -c "echo '--- DEBUG INFO ---' && ls -la node_modules/.bin && echo '--- PACKAGE.JSON ---' && cat package.json && echo '--- END DEBUG ---' && npm run migrate up && npm start"

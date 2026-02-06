@@ -2,7 +2,6 @@ services:
   app:
     build: .
     restart: always
-    command: sh -c "npm run migrate up && npm start"
     environment:
       HOST: 0.0.0.0
       NODE_ENV: production
