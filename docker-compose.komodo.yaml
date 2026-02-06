@@ -1,4 +1,5 @@
 services:
+  # Komodo Core (UI & API)
   komodo:
     image: ghcr.io/mbecker20/komodo:latest
     container_name: komodo
@@ -7,12 +8,22 @@ services:
       - "9120:9120"
     volumes:
       - ./komodo-data:/config
-      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - KOMODO_DATABASE_ADDRESS=mongo:27017
     depends_on:
       - mongo
 
+  # Komodo Periphery (Agent to manage Docker)
+  periphery:
+    image: ghcr.io/mbecker20/periphery:latest
+    container_name: komodo-periphery
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - PERIPHERY_PASSKEYS=password
+
+  # Database for Komodo
   mongo:
     image: mongo:latest
     container_name: komodo-mongo
@@ -20,9 +31,11 @@ services:
     volumes:
       - ./komodo-data/db:/data/db
 
+  # Secure Public Access
   tunnel:
     image: cloudflare/cloudflared:latest
     restart: always
     command: tunnel --url http://komodo:9120
+
 
 
