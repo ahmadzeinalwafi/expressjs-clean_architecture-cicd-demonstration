@@ -1,0 +1,9 @@
+node_modules
+coverage
+.git
+.env
+.test.env
+*.log
+npm-debug.log
+postman
+postman-v2

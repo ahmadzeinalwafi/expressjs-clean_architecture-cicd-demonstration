@@ -1,0 +1,28 @@
+services:
+  komodo:
+    image: ghcr.io/mbecker20/komodo:latest
+    container_name: komodo
+    restart: unless-stopped
+    ports:
+      - "9120:9120"
+    volumes:
+      - ./komodo-data:/config
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - KOMODO_DATABASE_ADDRESS=mongo:27017
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    container_name: komodo-mongo
+    restart: unless-stopped
+    volumes:
+      - ./komodo-data/db:/data/db
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    restart: always
+    command: tunnel --url http://komodo:9120
+
+

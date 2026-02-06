@@ -1,0 +1,11 @@
+node_modules
+package-lock.json
+.idea
+config/database/test.json
+coverage
+.env
+postman
+postman-v2
+config
+docker-compose.yaml
+komodo-data
