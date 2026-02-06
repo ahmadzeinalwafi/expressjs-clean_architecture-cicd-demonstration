@@ -16,6 +16,8 @@ services:
       ACCESS_TOKEN_KEY: ${ACCESS_TOKEN_KEY}
       REFRESH_TOKEN_KEY: ${REFRESH_TOKEN_KEY}
       ACCCESS_TOKEN_AGE: ${ACCCESS_TOKEN_AGE}
+    ports:
+      - "5000:5000"
     depends_on:
       - postgres
     networks:
