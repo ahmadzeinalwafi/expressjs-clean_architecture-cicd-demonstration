@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   app:
+    image: forum-api:v1-fix
     build: .
     restart: always
     command: sh -c "npm run migrate up && npm start"
