@@ -36,6 +36,3 @@ services:
     image: cloudflare/cloudflared:latest
     restart: always
     command: tunnel --url http://komodo:9120
-
-
-
