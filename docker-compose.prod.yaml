@@ -3,7 +3,6 @@ version: '3.8'
 services:
   app:
     build: .
-    build: .
     restart: always
     command: sh -c "npm run migrate up && npm start"
     environment:
