@@ -1,6 +1,8 @@
 # Forum API - Clean Architecture with CI/CD
 
-A secure, scalable REST API for a Forum application, built with Node.js, Express, and PostgreSQL using Clean Architecture principles. It features a fully automated CI/CD pipeline and Zero Trust deployment via Cloudflare Tunnels.
+A secure, scalable, and production-ready REST API designed for a modern Forum application. This project demonstrates advanced backend engineering practices by combining **Clean Architecture** (to ensure modularity and testability) with a robust **DevOps pipeline**.
+
+Built with **Node.js**, **Express**, and **PostgreSQL**, it features a fully automated CI/CD workflow using **GitHub Actions** and **Komo.do**, secured by **Cloudflare Tunnels** for Zero Trust deployment.
 
 ## 📖 About the Project
 
