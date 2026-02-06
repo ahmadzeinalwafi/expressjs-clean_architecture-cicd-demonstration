@@ -4,8 +4,8 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN rm -f package-lock.json && npm install
+RUN npm install -g node-pg-migrate && npm install
 
 COPY . .
 
-CMD sh -c "npm run migrate up && npm start"
+CMD sh -c "node-pg-migrate up && npm start"
