@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+import crypto from 'crypto';
 
 const webhookUrl = process.env.KOMODO_WEBHOOK_URL;
 const webhookSecret = process.env.KOMODO_WEBHOOK_SECRET;
