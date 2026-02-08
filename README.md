@@ -115,11 +115,20 @@ While not as globally famous as Jenkins or GitLab CI, Komo.do is a **hidden gem*
     *   `ACCESS_TOKEN_KEY`, `REFRESH_TOKEN_KEY`: JWT Secrets.
     *   `HOST=0.0.0.0`, `NODE_ENV=production`: Required for connectivity.
 
-### 2. Automatic Deployment (Webhooks)
-To enable CD (Deploy on Push):
-*   **Komo.do**: Copy Webhook URL from Stack -> Settings.
-*   **GitHub**: Add Webhook in Repo Settings (Trigger: Push).
-*   **URL Format**: `https://<YOUR-TUNNEL>.trycloudflare.com/listener/github/...`
+### 2. Automatic CD (GitHub Actions)
+The CD process is fully automated via GitHub Actions (`.github/workflows/cd.yml`).
+
+#### Workflow Usage:
+1.  **Trigger**: Pushing to `master` first triggers the **CI** workflow (Tests).
+2.  **Deployment**: If (and only if) the CI tests pass, the **CD** workflow runs.
+3.  **Action**: The CD workflow executes `scripts/trigger-deployment.js`, which sends a signed webhook to Komo.do.
+
+#### Setup Requirements:
+To enable this, you must configure the following **Repository Secrets** in GitHub (`Settings` -> `Secrets and variables` -> `Actions`):
+
+*   `KOMODO_WEBHOOK_URL`: The full webhook URL from your Komo.do Stack settings.
+*   `KOMODO_WEBHOOK_SECRET`: A secret string used to sign the request (verified by Komo.do).
+    *   *Note*: Ensure this secret matches the one configured in your Komo.do Stack (if applicable).
 
 ---
 
