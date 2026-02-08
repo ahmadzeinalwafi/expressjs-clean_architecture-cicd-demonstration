@@ -104,6 +104,8 @@ docker compose up -d --build
 
 This project leverages **[Komo.do](https://komo.do)** for Continuous Deployment. 
 
+> 📘 **Detailed Guide**: For a complete walkthrough of the stack, screenshots, and configuration, see the **[Deployment Documentation](./docs/README.md)**.
+
 ### Why Komo.do?
 While not as globally famous as Jenkins or GitLab CI, Komo.do is a **hidden gem** in the DevOps world. It offers a modern, incredibly fast, and resource-efficient way to manage Docker stacks across servers. It rivals the capabilities of heavy enterprise tools like Jenkins but with a much cleaner architecture (Core + Periphery agents). It allows for deploying updates in seconds with minimal configuration.
 
